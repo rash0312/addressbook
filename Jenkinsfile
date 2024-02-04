@@ -7,7 +7,8 @@ pipeline {
     }
 
     stages {
-        stage('Compile') {
+        stage('Compile') 
+        {
             steps {
                 script{
                     echo "Compiling"
@@ -15,29 +16,30 @@ pipeline {
                     sh "mvn compile"
                     }
                     // Get some code from a GitHub repository
-                    //git 'https://github.com/rash0312/addressbook.git/'
-
-                
+                    //git 'https://github.com/rash0312/addressbook.git/'              
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-            stage("Test")
+        }        
+        stage("Test")
+        {
+            steps
             {
-                steps{
-                    script{
+                script{
                         echo "Building the TC"
                     sh "mvn test"
                     }
-                }
             }
-            stage("Package")
+        }
+        stage("Package")
+        {
+            steps
             {
-                steps{
-                    script{
-                        echo "Building the TC"
+                script
+                {
+                    echo "Building the TC"
                     sh "mvn package"
-                    }
                 }
             }
         }
